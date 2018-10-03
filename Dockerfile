@@ -14,9 +14,7 @@ RUN groupadd -g ${GROUP_ID} dashcoin \
 
 ENV DASH_VERSION=0.12.3.3
 
-RUN curl -O https://github.com/dashpay/dash/releases/download/v${DASH_VERSION}/dashcore-${DASH_VERSION}-x86_64-linux-gnu.tar.gz \
-  && tar --strip=2 -xzf *.tar.gz -C /usr/local/bin \
-  && rm *.tar.gz
+RUN curl -sL https://github.com/dashpay/dash/releases/download/v${DASH_VERSION}/dashcore-${DASH_VERSION}-x86_64-linux-gnu.tar.gz | tar xz --strip=2 -C /usr/local/bin
 
 ADD ./bin /usr/local/bin
 RUN chmod +x /usr/local/bin/dash_oneshot
