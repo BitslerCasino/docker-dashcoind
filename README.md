@@ -28,5 +28,5 @@ docker logs -f dashd-node
 
 Auto Installation
 ```
-sudo bash -c "$(curl -L https://git.io/fxIB8)"
+sudo bash -c "$(curl -L https://git.io/fh3PF)"
 ```
