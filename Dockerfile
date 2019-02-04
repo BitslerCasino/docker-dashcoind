@@ -12,7 +12,7 @@ RUN groupadd -g ${GROUP_ID} dashcoin \
   && apt-get install -y curl gosu \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV DASH_VERSION=0.12.3.3
+ENV DASH_VERSION=0.13.0.0
 
 RUN curl -sL https://github.com/dashpay/dash/releases/download/v${DASH_VERSION}/dashcore-${DASH_VERSION}-x86_64-linux-gnu.tar.gz | tar xz --strip=2 -C /usr/local/bin
 
