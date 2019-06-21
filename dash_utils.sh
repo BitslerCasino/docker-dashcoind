@@ -27,7 +27,7 @@ VERSION="${1:-latest}"
 echo "Stopping dashd"
 docker exec -it dashd-node /bin/bash -c "dash-cli stop"
 echo "Waiting dashd gracefull shutdown...30-60secs"
-sleep 10sleep
+sleep 10
 echo "Updating dashd to $VERSION version..."
 docker pull bitsler/docker-dashcoind:$VERSION
 echo "Removing old dashd installation"
