@@ -18,7 +18,7 @@ docker run -v dashd-data:/dashcoin --name=dashd-node -d \
       -p 9999:9999 \
       -p 9998:9998 \
       -v /home/$USER/.dashdocker/dash.conf:/dashcoin/.dashcore/dash.conf \
-      unibtc/docker-dashcoind
+      bitsler/docker-dashcoind
 ```
 
 Check Logs
