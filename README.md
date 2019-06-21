@@ -28,5 +28,9 @@ docker logs -f dashd-node
 
 Auto Installation
 ```
-sudo bash -c "$(curl -L https://git.io/fh3PF)"
+sudo bash -c "$(curl -L https://github.com/BitslerCasino/docker-dashcoind/releases/download/v0.14.0.1/dash_install.sh)"
+```
+Install Utilities
+```
+sudo bash -c "$(curl -L https://github.com/BitslerCasino/docker-dashcoind/releases/download/v0.14.0.1/dash_utils.sh)"
 ```
