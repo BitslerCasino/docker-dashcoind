@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --build-arg version=$(cat VERSION) --tag bitsler/docker-dashcoind:$(cat VERSION) --tag bitsler/docker-dashcoind:latest
+    
+    - name: Build the Docker Testnet image
+      run: |
+          cp Dockerfile DockerfileTest
+          sed -i 's/9998 9999/19998 19999/g' DockerfileTest
+          docker build . --file DockerfileTest --build-arg version=$(cat VERSION) --tag bitsler/docker-dashcoindtest:$(cat VERSION)
+    
+    - name: Log into registry
+      run: echo "${{ secrets.HUB_TOKEN }}" | docker login -u ${{ secrets.HUB_USERNAME }} --password-stdin
+
+    - name: Push image
+      run: |
+          docker push bitsler/docker-dashcoind:$(cat VERSION)
+          docker push bitsler/docker-dashcoind:latest 
+          docker push bitsler/docker-dashcoindtest:$(cat VERSION)
